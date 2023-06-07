@@ -3,7 +3,8 @@ import logo from '../../../assets/logo.png'
 
 const Header = () => {
     const navItem = <>
-        <li><a>Item 1</a></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/register">SignUp</Link></li>
         {/* <li tabIndex={0}>
             <details>
                 <summary>Parent</summary>
@@ -13,10 +14,9 @@ const Header = () => {
                 </ul>
             </details>
         </li> */}
-        <li><a>Item 3</a></li>
     </>
     return (
-        <div className="navbar bg-base-100 fixed z-10 bg-opacity-20 text-purple-800">
+        <div className="navbar bg-base-100 max-w-7xl fixed z-10 bg-opacity-20 text-purple-800">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
