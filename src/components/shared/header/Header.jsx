@@ -16,7 +16,7 @@ const Header = () => {
         <li><a>Item 3</a></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 fixed z-10 bg-opacity-20 text-purple-800">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -31,7 +31,7 @@ const Header = () => {
                 <Link><img src={logo} className="w-40 md:w-56 " alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 text-lg font-bold">
                        {
                         navItem
                        }
