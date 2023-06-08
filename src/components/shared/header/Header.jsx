@@ -20,6 +20,7 @@ const Header = () => {
     }
     const navItem = <>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/Classes">Classes</Link></li>
         {
             user && <li onClick={handelLogOut}><Link>LogOut</Link></li>
         }
@@ -34,7 +35,7 @@ const Header = () => {
         </li> */}
     </>
     return (
-        <div className="navbar bg-base-300 max-w-7xl fixed z-10 bg-opacity-20 text-purple-500">
+        <div className="navbar bg-base-300 max-w-7xl fixed z-10 bg-opacity-50 text-blue-700">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

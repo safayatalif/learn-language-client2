@@ -5,10 +5,13 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { FaGoogle } from "react-icons/fa";
 const Registration = () => {
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
+    let from = location.state?.from?.pathname || "/";
+
     const navigate = useNavigate();
 
     const handleTogglePassword = () => {
@@ -37,7 +40,7 @@ const Registration = () => {
                                 showConfirmButton: false,
                                 timer: 2500
                             })
-                            navigate('/')
+                            navigate(from, { replace: true });
                         })
                         .catch(error => {
                             setError(error.message)
@@ -49,6 +52,29 @@ const Registration = () => {
         }
 
     };
+
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                if (result.user) {
+                    setError('')
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Your Google LogIn Successfully',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
+
+
+
 
 
     return (
@@ -117,6 +143,10 @@ const Registration = () => {
 
                             <div className="form-control mt-6">
                                 <button type="submit" className="btn btn-primary">Register</button>
+                            </div>
+                            <div className="divider">OR</div>
+                            <div className="form-control">
+                                <button onClick={handleGoogleSignIn} className="btn btn-primary btn-outline"><FaGoogle className='mr-4'></FaGoogle>Google Sign In</button>
                             </div>
                             <label className="label">
                                 <p>Already Have An Account ?<Link to="/login" className='underline text-red-400'> Login</Link></p>
