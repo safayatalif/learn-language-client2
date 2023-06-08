@@ -1,13 +1,48 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { ImWarning } from "react-icons/im"
+import { AuthContext } from "../../contexts/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const Registration = () => {
+    const [error, setError] = useState("");
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        if (data.password !== data.confirmPassword) {
+            setError("password dose not match")
+
+        }
+        else {
+            setError("")
+            createUser(data?.email, data?.password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user);
+                    updateUserProfile(data?.name , data?.photoURL)
+                        .then(() => {
+                            setError('')
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Your Register Successfully',
+                                showConfirmButton: false,
+                                timer: 2500
+                            })
+                            navigate('/')
+                        })
+                        .catch(error=>{
+                            setError(error.message)
+                        })
+                })
+                .catch(error => {
+                    setError(error.message)
+                })
+        }
+
     };
 
-    console.log(watch("example"));
 
     return (
         <>
@@ -17,22 +52,53 @@ const Registration = () => {
                 </div>
                 <div>
                     <div className="card w-full p-12">
+                        <h1 className="text-5xl font-semibold text-purple-600 text-center">Sign Up !!</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" placeholder="name" className="input input-bordered" required {...register("name")} />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input type="url"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                                {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" className="input input-bordered" {...register("email")} />
+                                <input type="text" placeholder="email" className="input input-bordered" {...register("email", { required: true })} />
+                                {errors.email && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Email is required</p>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" {...register("password")} />
-                                <label className="label">
-                                    {errors.password && <span>This field is required</span>}
-                                </label>
+                                <input type="password"  {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                })} placeholder="password" className="input input-bordered" />
+                                {errors.password?.type === 'required' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password is required</p>}
+                                {errors.password?.type === 'minLength' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must be 6 characters</p>}
+                                {errors.password?.type === 'maxLength' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must be less than 20 characters</p>}
+                                {errors.password?.type === 'pattern' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must have one Uppercase one lower case, one number and one special character.</p>}
                             </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Confirm Password</span>
+                                </label>
+                                <input type="password" placeholder="confirmPassword" className="input input-bordered" {...register("confirmPassword", { required: true })} />
+                                {error && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> {error}</p>}
+                                {errors.confirmPassword && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Confirm password is required</p>}
+
+                            </div>
+
                             <div className="form-control mt-6">
                                 <button type="submit" className="btn btn-primary">Login</button>
                             </div>
@@ -40,14 +106,6 @@ const Registration = () => {
                     </div>
                 </div>
             </div>
-            {/* <form onSubmit={handleSubmit(onSubmit)}>
-            <input defaultValue="test" {...register("example")} />
-
-            <input {...register("exampleRequired", { required: true })} />
-            {errors.exampleRequired && <span>This field is required</span>}
-
-            <input type="submit" />
-        </form> */}
         </>
     );
 };

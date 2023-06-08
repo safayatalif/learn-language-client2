@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Header = () => {
+    const {user } = useContext(AuthContext)
+
     const navItem = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/register">SignUp</Link></li>
@@ -40,7 +44,7 @@ const Header = () => {
             <div className="navbar-end mr-2 md:mr-8">
                 <div className="avatar">
                     <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src="https://media.istockphoto.com/id/1316420668/vector/user-icon-human-person-symbol-social-profile-icon-avatar-login-sign-web-user-symbol.jpg?s=612x612&w=0&k=20&c=AhqW2ssX8EeI2IYFm6-ASQ7rfeBWfrFFV4E87SaFhJE=" />
+                        <img src={user?.photoURL} />
                     </div>
                 </div>
             </div>
