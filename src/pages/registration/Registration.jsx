@@ -3,11 +3,18 @@ import { useForm } from "react-hook-form";
 import { ImWarning } from "react-icons/im"
 import { AuthContext } from "../../contexts/AuthProvider";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 const Registration = () => {
     const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -21,7 +28,7 @@ const Registration = () => {
                 .then(result => {
                     const user = result.user;
                     console.log(user);
-                    updateUserProfile(data?.name , data?.photoURL)
+                    updateUserProfile(data?.name, data?.photoURL)
                         .then(() => {
                             setError('')
                             Swal.fire({
@@ -32,7 +39,7 @@ const Registration = () => {
                             })
                             navigate('/')
                         })
-                        .catch(error=>{
+                        .catch(error => {
                             setError(error.message)
                         })
                 })
@@ -71,23 +78,32 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" className="input input-bordered" {...register("email", { required: true })} />
+                                <input type="email" placeholder="email" className="input input-bordered" {...register("email", { required: true })} />
                                 {errors.email && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Email is required</p>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password"  {...register("password", {
-                                    required: true,
-                                    minLength: 6,
-                                    maxLength: 20,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                                })} placeholder="password" className="input input-bordered" />
-                                {errors.password?.type === 'required' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must be less than 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must have one Uppercase one lower case, one number and one special character.</p>}
+                                <div className="join">
+                                    <input type={showPassword ? 'text' : 'password'}  {...register("password", {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20,
+                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                    })} placeholder="password" className="input input-bordered join-item w-full" />
+                                    <button
+                                        type="button"
+                                        onClick={handleTogglePassword}
+                                        className=" bg-purple-400 p-2 rounded join-item"
+                                    >{showPassword ? (<AiFillEye></AiFillEye>) : (<AiFillEyeInvisible></AiFillEyeInvisible>)}</button>
+                                    {errors.password?.type === 'required' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password is required</p>}
+                                    {errors.password?.type === 'minLength' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must be 6 characters</p>}
+                                    {errors.password?.type === 'maxLength' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must be less than 20 characters</p>}
+                                    {errors.password?.type === 'pattern' && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Password must have one Uppercase one lower case, one number and one special character.</p>}
+                                </div>
+
+
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -100,8 +116,11 @@ const Registration = () => {
                             </div>
 
                             <div className="form-control mt-6">
-                                <button type="submit" className="btn btn-primary">Login</button>
+                                <button type="submit" className="btn btn-primary">Register</button>
                             </div>
+                            <label className="label">
+                                <p>Already Have An Account ?<Link to="/login" className='underline text-red-400'> Login</Link></p>
+                            </label>
                         </form>
                     </div>
                 </div>
