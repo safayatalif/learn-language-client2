@@ -28,18 +28,9 @@ const Header = () => {
                 <li><Link to="/dashboard">Dashboard</Link></li>
             </>
         }
-        {/* <li tabIndex={0}>
-            <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
-                </ul>
-            </details>
-        </li> */}
     </>
     return (
-        <div className="navbar bg-base-300 max-w-7xl fixed z-10 bg-opacity-50 text-blue-700">
+        <div className="navbar bg-base-300 max-w-7xl fixed z-20 bg-opacity-50 text-blue-700 h-20">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
