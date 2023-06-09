@@ -21,6 +21,7 @@ const Header = () => {
     const navItem = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/Classes">Classes</Link></li>
+        <li><Link to="/instructor">Instructor</Link></li>
         {
             user && <li onClick={handelLogOut}><Link>LogOut</Link></li>
         }
