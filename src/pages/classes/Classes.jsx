@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Card from "../../components/shared/card/Card";
 
 
 const Classes = () => {
-    const [language , setLanguage] = useState("English")
+    const [language, setLanguage] = useState("English")
     const [classItems, setClassItem] = useState([]);
 
     useEffect(() => {
@@ -39,19 +40,39 @@ const Classes = () => {
                 </TabList>
 
                 <TabPanel>
-                    <h2>Any content 1</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8">
+                        {
+                            classItems.map(classItem => <Card key={classItem._id} classItem={classItem} ></Card>)
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8">
+                        {
+                            classItems.map(classItem => <Card key={classItem._id} classItem={classItem} ></Card>)
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 3</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8">
+                        {
+                            classItems.map(classItem => <Card key={classItem._id} classItem={classItem} ></Card>)
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 4</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8">
+                        {
+                            classItems.map(classItem => <Card key={classItem._id} classItem={classItem} ></Card>)
+                        }
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 5</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8">
+                        {
+                            classItems.map(classItem => <Card key={classItem._id} classItem={classItem} ></Card>)
+                        }
+                    </div>
                 </TabPanel>
             </Tabs>
         </div>
