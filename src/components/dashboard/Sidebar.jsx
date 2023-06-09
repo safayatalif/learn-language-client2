@@ -17,7 +17,6 @@ const Sidebar = () => {
                                 </div>
                             </Link>
                         </li>
-                        <hr />
                         <li className="mt-12 w-full mx-auto space-y-4">
                             <Link to="selected">My Selected Classes</Link>
                             <Link to="enroll">My Enrolled Classes</Link>

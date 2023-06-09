@@ -36,7 +36,7 @@ const Card = ({ classItem }) => {
                     if (response?.upsertedCount > 0 || response?.modifiedCount > 0) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Your crouse has been select !!',
+                            title: 'Your Course has been select !!',
                             showConfirmButton: false,
                             timer: 2000
                         })

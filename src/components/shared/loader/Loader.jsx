@@ -11,7 +11,7 @@ const Loader = () => {
       items-center 
     '
         >
-            <RiseLoader size={100} color="#0700e5" />
+            <RiseLoader size={50} color="#0700e5" />
 
         </div>
     )
