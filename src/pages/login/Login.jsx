@@ -44,6 +44,7 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 if (result.user) {
+                    console.log(result.user)
                     setError('')
                     Swal.fire({
                         icon: 'success',
