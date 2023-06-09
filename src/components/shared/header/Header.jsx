@@ -23,7 +23,10 @@ const Header = () => {
         <li><Link to="/Classes">Classes</Link></li>
         <li><Link to="/instructor">Instructor</Link></li>
         {
-            user && <li onClick={handelLogOut}><Link>LogOut</Link></li>
+            user && <>
+                <li onClick={handelLogOut}><Link>LogOut</Link></li>
+                <li><Link to="/dashboard">Dashboard</Link></li>
+            </>
         }
         {/* <li tabIndex={0}>
             <details>

@@ -98,7 +98,7 @@ const Login = () => {
                         </label>
 
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-primary">Register</button>
+                            <button type="submit" className="btn btn-primary">LogIn</button>
                         </div>
                         <div className="divider">OR</div>
                         <div className="form-control">
