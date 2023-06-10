@@ -4,12 +4,21 @@ import Loader from './../../../components/shared/loader/Loader';
 import { FaPaypal } from 'react-icons/fa';
 
 
+
 import Swal from "sweetalert2";
 import { AiFillDelete } from "react-icons/ai";
+import EmptyComponent from "../../../components/shared/emptyComponent/EmptyComponent";
+import CheckoutForm from "../../../components/dashboard/CheckoutForm";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PUBLISHABLE_KEY);
+
 
 const MySelectedClass = () => {
     const [selectedClasses, setSelectedClasses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [payItem , setPayItem] = useState({});
+
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
@@ -23,7 +32,6 @@ const MySelectedClass = () => {
 
 
     const handleDelete = _id => {
-        // console.log('delete', _id);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -54,42 +62,68 @@ const MySelectedClass = () => {
         })
     }
 
+    const handleModal = (payItemId , price) => {
+        setPayItem({payItemId , price});
+        
+    }
+
     return (
-        <div className="p-8">
-            <div className="space-y-4">
-                <h3 className="text-2xl text-blue-400">My Selected Courses</h3>
-                <h1 className="text-4xl font-semibold">Pay OR Delete Your Courses</h1>
-            </div>
+        <>
             {
-                loading ? <Loader></Loader> : <div className="overflow-x-auto">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Course</th>
-                                <th>language</th>
-                                <th>actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                selectedClasses.map((selectedClass, index) => <tr key={selectedClass?._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{selectedClass?.topic}</td>
-                                    <td>{selectedClass?.language}</td>
-                                    <td className="space-x-4">
-                                        <span onClick={() => handleDelete(selectedClass?._id)} className="badge badge-warning badge-sm cursor-pointer"><AiFillDelete></AiFillDelete></span>
-                                        <span className="badge badge-primary badge-sm cursor-pointer"><FaPaypal></FaPaypal></span>
-                                    </td>
-                                </tr>)
-                            }
+                selectedClasses && Array.isArray(selectedClasses) && selectedClasses.length > 0 ? <div className="md:p-8">
+                    <div className="space-y-4 my-4">
+                        <h3 className="text-xl text-blue-400">My Selected Courses</h3>
+                        <h1 className="text-2xl font-semibold">Pay OR Delete Your Selected Courses</h1>
+                    </div>
+                    {
+                        loading ? <Loader></Loader> : <div className="overflow-x-auto">
+                            <table className="table">
+                                <thead className="bg-blue-300">
+                                    <tr>
+                                        <th></th>
+                                        <th>Course</th>
+                                        <th>Language</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        selectedClasses.map((selectedClass, index) => <tr key={selectedClass?._id}>
+                                            <th>{index + 1}</th>
+                                            <td>{selectedClass?.topic}</td>
+                                            <td>{selectedClass?.language}</td>
+                                            <td>{selectedClass?.price} $</td>
+                                            <td className="space-x-4">
+                                                <span onClick={() => handleDelete(selectedClass?._id)} className="badge badge-warning badge-sm cursor-pointer"><AiFillDelete></AiFillDelete></span>
+                                                <label htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id , selectedClass?.price)} className="badge badge-primary badge-sm cursor-pointer"><FaPaypal></FaPaypal></label>
+
+                                            </td>
+                                        </tr>)
+                                    }
 
 
-                        </tbody>
-                    </table>
-                </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div> : <EmptyComponent message="No Selected Class" address="/classes" label="Select class"></EmptyComponent>
             }
-        </div>
+
+
+            {/* payment modal  */}
+            <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box space-y-6">
+                    <h3 className="text-xl font-bold text-blue-500 text-center">Payment</h3>
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm price={payItem.price} ></CheckoutForm>
+                    </Elements>
+
+                </div>
+                <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
+            </div>
+        </>
     );
 };
 

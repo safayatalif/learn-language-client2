@@ -15,6 +15,7 @@ const Card = ({ classItem }) => {
 
         const selectInfo = {
             classId: _id,
+            price,
             topic,
             instructor_name,
             language,

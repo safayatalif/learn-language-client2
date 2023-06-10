@@ -19,7 +19,6 @@ const Classes = () => {
             });
     }, [language])
 
-    console.log(classItems)
 
     return (
         <div className="py-20">
