@@ -10,54 +10,55 @@ import DashboardLayout from "../../layout/DashboardLayout";
 import MySelectedClass from "../../pages/dashboard/mySelectedClass/MySelectedClass";
 import MyEnrollClass from "../../pages/dashboard/myEnrollClass/MyEnrollClass";
 import AddClass from "../../pages/dashboard/addClass/AddClass";
+import PrivateRoute from "./privateRoute";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element:<Main></Main>,
-      children:[
-       {
-        path: "/" ,
-        element:<Home></Home>
-       },
-       {
-        path: "/login" ,
-        element:<Login></Login>
-       },
-       {
-        path: "/register" ,
-        element:<Registration></Registration>
-       },
-       {
-        path: "/classes" ,
-        element:<Classes></Classes>
-       },
-       {
-        path: "/instructor" ,
-        element:<Instructor></Instructor>
-       }
-      ]
-    },
-    {
-      path:"/dashboard",
-      element: <DashboardLayout></DashboardLayout>,
-      children:[
-        {
-          path:"/dashboard/",
-          element:<Dashboard></Dashboard>
-        },
-        {
-          path:"/dashboard/selected",
-          element:<MySelectedClass></MySelectedClass>
-        },
-        {
-          path:"/dashboard/enroll",
-          element:<MyEnrollClass></MyEnrollClass>
-        },
-        {
-          path:"/dashboard/addclass",
-          element:<AddClass></AddClass>
-        }
-      ]
-    }
-  ]);
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Registration></Registration>
+      },
+      {
+        path: "/classes",
+        element: <Classes></Classes>
+      },
+      {
+        path: "/instructor",
+        element: <Instructor></Instructor>
+      }
+    ]
+  },
+  {
+    path: "/dashboard",
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children: [
+      {
+        path: "/dashboard/",
+        element: <Dashboard></Dashboard>
+      },
+      {
+        path: "/dashboard/selected",
+        element: <MySelectedClass></MySelectedClass>
+      },
+      {
+        path: "/dashboard/enroll",
+        element: <MyEnrollClass></MyEnrollClass>
+      },
+      {
+        path: "/dashboard/addclass",
+        element: <AddClass></AddClass>
+      }
+    ]
+  }
+]);

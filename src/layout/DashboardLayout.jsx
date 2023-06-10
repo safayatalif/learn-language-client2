@@ -13,7 +13,7 @@ const DashboardLayout = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
                     {/* Page content here */}
-                    <label htmlFor="my-drawer-2" className=" w-16 btn btn-primary btn-outline drawer-button lg:hidden"><MdSpaceDashboard className="text-4xl"></MdSpaceDashboard></label>
+                    <label htmlFor="my-drawer-2" className="w-16 btn btn-primary btn-outline drawer-button mx-8 lg:hidden"><MdSpaceDashboard className="text-4xl"></MdSpaceDashboard></label>
 
                     <Outlet></Outlet>
 

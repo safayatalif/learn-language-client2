@@ -24,7 +24,7 @@ const Classes = () => {
         <div className="py-20">
             <div className="grid grid-cols-1 md:grid-cols-2 py-12">
                 <div className="space-y-4">
-                    <h3 className="text-2xl text-blue-400">Our Courses</h3>
+                    <h3 className="text-2xl text-blue-400">Our Classes</h3>
                     <h1 className="text-4xl font-semibold">Choose Your Language</h1>
                 </div>
                 <div>

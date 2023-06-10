@@ -14,7 +14,7 @@ const CheckoutForm = ({ price }) => {
     // const { axiosSecure } = useAxiosSecure();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
-    const [processing, setProcessing] = useState(true);
+    const [processing, setProcessing] = useState(false);
     const jwtToken = localStorage.getItem("access-token");
     const [transactionId, setTransactionId] = useState('');
 
@@ -85,6 +85,8 @@ const CheckoutForm = ({ price }) => {
                 },
             },
         );
+        setProcessing(false)
+
 
         if (confirmError) {
             console.log(confirmError);
@@ -119,7 +121,7 @@ const CheckoutForm = ({ price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary mt-6 w-full" type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className="btn btn-primary mt-6 w-full" type="submit" disabled={!stripe  || processing}>
                     Pay {price} $
                 </button>
             </form>

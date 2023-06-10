@@ -4,12 +4,12 @@ import { useContext } from 'react';
 
 const Sidebar = () => {
     const { user } = useContext(AuthContext);
-    const role = "student";
+    const role = "instructor"
     return (
         <>
-            {role === "student" && <div className="drawer-side">
+            {!role && <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-56 md:w-64  h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-56 md:w-64  h-screen bg-base-200 text-base-content">
                     <li className="w-full mx-auto">
                         <Link to='/'>
                             <div className="avatar">
@@ -28,7 +28,7 @@ const Sidebar = () => {
             {
                 role === "instructor" && <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-56 md:w-64  h-full bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-56 md:w-64  h-screen bg-base-200 text-base-content">
                         <li className="w-full mx-auto">
                             <Link to='/'>
                                 <div className="avatar">

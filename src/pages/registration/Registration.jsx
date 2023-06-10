@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaGoogle } from "react-icons/fa";
+import { saveUser } from "../../api/auth";
 const Registration = () => {
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +33,8 @@ const Registration = () => {
                     const user = result.user;
                     console.log(user);
                     updateUserProfile(data?.name, data?.photoURL)
-                        .then(() => {
+                        .then((result) => {
+                            saveUser(result.user);
                             setError('')
                             Swal.fire({
                                 icon: 'success',
@@ -58,6 +60,7 @@ const Registration = () => {
         googleSignIn()
             .then(result => {
                 if (result.user) {
+                    saveUser(result.user);
                     setError('')
                     Swal.fire({
                         icon: 'success',

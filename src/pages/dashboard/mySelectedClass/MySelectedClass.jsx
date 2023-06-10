@@ -64,7 +64,7 @@ const MySelectedClass = () => {
 
     const handleModal = (payItemId , price) => {
         setPayItem({payItemId , price});
-        
+
     }
 
     return (
@@ -72,8 +72,8 @@ const MySelectedClass = () => {
             {
                 selectedClasses && Array.isArray(selectedClasses) && selectedClasses.length > 0 ? <div className="md:p-8">
                     <div className="space-y-4 my-4">
-                        <h3 className="text-xl text-blue-400">My Selected Courses</h3>
-                        <h1 className="text-2xl font-semibold">Pay OR Delete Your Selected Courses</h1>
+                        <h3 className="text-xl text-blue-400">My Selected Classes</h3>
+                        <h1 className="text-2xl font-semibold">Pay OR Delete Your Selected Classes</h1>
                     </div>
                     {
                         loading ? <Loader></Loader> : <div className="overflow-x-auto">

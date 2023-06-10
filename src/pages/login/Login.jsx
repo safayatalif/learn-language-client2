@@ -6,6 +6,7 @@ import { ImWarning } from "react-icons/im";
 import { FaGoogle } from "react-icons/fa";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { saveUser } from "../../api/auth";
 
 const Login = () => {
     const [error, setError] = useState("");
@@ -44,7 +45,7 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 if (result.user) {
-                    console.log(result.user)
+                    saveUser(result.user)
                     setError('')
                     Swal.fire({
                         icon: 'success',
