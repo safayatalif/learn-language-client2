@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import Loader from './../../../components/shared/loader/Loader';
 import { FaPaypal } from 'react-icons/fa';
@@ -11,24 +11,28 @@ import EmptyComponent from "../../../components/shared/emptyComponent/EmptyCompo
 import CheckoutForm from "../../../components/dashboard/CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PUBLISHABLE_KEY);
 
 
 const MySelectedClass = () => {
-    const [selectedClasses, setSelectedClasses] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [payItem , setPayItem] = useState({});
+    const [payItem, setPayItem] = useState({});
+    const [axiosSecure] = useAxiosSecure();
 
     const { user } = useContext(AuthContext);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/selected/${user?.email}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setSelectedClasses(data);
-                setLoading(false)
-            });
-    }, [user]);
+    const { refetch, data: selectedClasses = [] } = useQuery({
+        queryKey: ['selected'],
+        queryFn: async () => {
+            const res = await axiosSecure(
+                `selected/${user?.email}`
+            )
+            setLoading(false)
+            return res.data.filter(selectClass => selectClass.status === "select")
+        },
+    })
 
 
     const handleDelete = _id => {
@@ -52,18 +56,16 @@ const MySelectedClass = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         if (data.deletedCount > 0) {
-                            const remaining = selectedClasses.filter(selectedClass => selectedClass._id !== _id);
-                            setSelectedClasses(remaining);
+                            refetch();
                         }
                     })
             }
         })
     }
 
-    const handleModal = (payItemId , price) => {
-        setPayItem({payItemId , price});
+    const handleModal = (payItemId, price) => {
+        setPayItem({ payItemId, price });
 
     }
 
@@ -95,8 +97,8 @@ const MySelectedClass = () => {
                                             <td>{selectedClass?.language}</td>
                                             <td>{selectedClass?.price} $</td>
                                             <td className="space-x-4">
-                                                <span onClick={() => handleDelete(selectedClass?._id)} className="badge badge-warning badge-sm cursor-pointer"><AiFillDelete></AiFillDelete></span>
-                                                <label htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id , selectedClass?.price)} className="badge badge-primary badge-sm cursor-pointer"><FaPaypal></FaPaypal></label>
+                                                <span onClick={() => handleDelete(selectedClass?._id)} className="btn btn-xs btn-error"><AiFillDelete></AiFillDelete></span>
+                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7"  onClick={() => handleModal(selectedClass?._id, selectedClass?.price)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
 
                                             </td>
                                         </tr>)
@@ -117,7 +119,7 @@ const MySelectedClass = () => {
                 <div className="modal-box space-y-6">
                     <h3 className="text-xl font-bold text-blue-500 text-center">Payment</h3>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm price={payItem.price} ></CheckoutForm>
+                        <CheckoutForm price={payItem?.price} payItemId={payItem?.payItemId} ></CheckoutForm>
                     </Elements>
 
                 </div>

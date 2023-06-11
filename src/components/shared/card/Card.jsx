@@ -33,7 +33,6 @@ const Card = ({ classItem }) => {
             })
                 .then(response => response.json())
                 .then(response => {
-                    console.log(response)
                     if (response?.upsertedCount > 0 || response?.modifiedCount > 0) {
                         Swal.fire({
                             icon: 'success',

@@ -90,8 +90,8 @@ const ManageUsers = () => {
                                 <td>{user?.email}</td>
                                 <td>
                                     <div className="btn-group">
-                                        <button disabled={user?.role === "admin"} onClick={() => { handleAdmin(user?.email) }} className="btn btn-xs btn-primary"><RiAdminFill></RiAdminFill></button>
-                                        <label disabled={user?.role === "instructor"} htmlFor="my_modal_6" onClick={() => { handleInstructor(user?.email) }} className="btn btn-xs btn-warning"><GiTeacher></GiTeacher></label>
+                                        <button title="admin" disabled={user?.role === "admin"} onClick={() => { handleAdmin(user?.email) }} className="btn btn-xs btn-primary"><RiAdminFill></RiAdminFill></button>
+                                        <label title="Instructor" disabled={user?.role === "instructor"} htmlFor="my_modal_6" onClick={() => { handleInstructor(user?.email) }} className="btn btn-xs btn-warning"><GiTeacher></GiTeacher></label>
                                     </div>
                                 </td>
                             </tr>)

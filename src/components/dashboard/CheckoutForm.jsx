@@ -6,8 +6,9 @@ import { ImWarning } from "react-icons/im";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { AiOutlineTransaction } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { statusEnroll } from "../../api/selected";
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, payItemId }) => {
     const stripe = useStripe()
     const elements = useElements();
     const { user } = useContext(AuthContext);
@@ -93,12 +94,19 @@ const CheckoutForm = ({ price }) => {
         }
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
-            Swal.fire({
-                icon: 'success',
-                title: 'Your Payment Success',
-                showConfirmButton: false,
-                timer: 2000
-            })
+
+            if (paymentIntent.id) {
+                statusEnroll(payItemId, paymentIntent.id).then(data => {
+                    console.log(data);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Your Payment Success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                })
+            }
+
         }
     }
 
@@ -121,7 +129,7 @@ const CheckoutForm = ({ price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary mt-6 w-full" type="submit" disabled={!stripe  || processing}>
+                <button className="btn btn-primary mt-6 w-full" type="submit" disabled={!stripe || processing}>
                     Pay {price} $
                 </button>
             </form>

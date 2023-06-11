@@ -130,9 +130,9 @@ const ManageClasses = () => {
                                     <td><span className="badge badge-error badge-sm">{classItem?.status}</span></td>
                                     <td>
                                         <div className="btn-group">
-                                            <button disabled={classItem?.status === "approved"} onClick={() => { handleApproved(classItem?._id) }} className="btn btn-xs btn-primary"><FaRegThumbsUp></FaRegThumbsUp></button>
-                                            <button disabled={classItem?.status === "pending"} onClick={() => { handlePending(classItem?._id) }} className="btn btn-xs btn-warning"><MdOutlinePending></MdOutlinePending></button>
-                                            <label disabled={classItem?.status === "denied"} htmlFor="my_modal_6" onClick={() => { handleDenied(classItem?._id) }} className="btn btn-xs btn-error"><MdOutlineCancel></MdOutlineCancel></label>
+                                            <button title="Approved" disabled={classItem?.status === "approved"} onClick={() => { handleApproved(classItem?._id) }} className="btn btn-xs btn-primary"><FaRegThumbsUp></FaRegThumbsUp></button>
+                                            <button title="Pending" disabled={classItem?.status === "pending"} onClick={() => { handlePending(classItem?._id) }} className="btn btn-xs btn-warning"><MdOutlinePending></MdOutlinePending></button>
+                                            <label title="Deny" disabled={classItem?.status === "denied"} htmlFor="my_modal_6" onClick={() => { handleDenied(classItem?._id) }} className="btn btn-xs btn-error"><MdOutlineCancel></MdOutlineCancel></label>
                                         </div>
                                     </td>
                                 </tr>)
