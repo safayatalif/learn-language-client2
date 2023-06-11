@@ -1,6 +1,5 @@
 export const statusEnroll = (id, transactionId) => {
     const enroll = {
-        status: 'enroll',
         transactionId: transactionId
     }
 

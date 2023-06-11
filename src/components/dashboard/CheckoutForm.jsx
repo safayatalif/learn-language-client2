@@ -97,13 +97,14 @@ const CheckoutForm = ({ price, payItemId }) => {
 
             if (paymentIntent.id) {
                 statusEnroll(payItemId, paymentIntent.id).then(data => {
-                    console.log(data);
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Your Payment Success',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
+                    if (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Your Payment Success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
                 })
             }
 

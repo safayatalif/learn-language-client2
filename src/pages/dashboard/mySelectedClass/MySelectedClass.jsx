@@ -30,7 +30,7 @@ const MySelectedClass = () => {
                 `selected/${user?.email}`
             )
             setLoading(false)
-            return res.data.filter(selectClass => selectClass.status === "select")
+            return res.data.filter(selectClass => !selectClass.transactionId)
         },
     })
 
@@ -98,7 +98,7 @@ const MySelectedClass = () => {
                                             <td>{selectedClass?.price} $</td>
                                             <td className="space-x-4">
                                                 <span onClick={() => handleDelete(selectedClass?._id)} className="btn btn-xs btn-error"><AiFillDelete></AiFillDelete></span>
-                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7"  onClick={() => handleModal(selectedClass?._id, selectedClass?.price)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
+                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id, selectedClass?.price)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
 
                                             </td>
                                         </tr>)

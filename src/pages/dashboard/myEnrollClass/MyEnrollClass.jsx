@@ -60,7 +60,7 @@ const MyEnrollClass = () => {
                             </table>
                         </div>
                     }
-                </div> : <EmptyComponent message="No Enroll Class" address="/selected" label="< Enroll Class"></EmptyComponent>
+                </div> : <EmptyComponent message="No Enroll Class" address="/dashboard/selected" label="< Enroll Class"></EmptyComponent>
             }
         </div>
     );

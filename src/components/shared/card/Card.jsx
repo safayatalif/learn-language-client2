@@ -19,7 +19,6 @@ const Card = ({ classItem }) => {
             topic,
             instructor_name,
             language,
-            status: "select",
             available_seats,
             student_email: user?.email
         }
@@ -66,8 +65,7 @@ const Card = ({ classItem }) => {
                 <p><span className="font-semibold">Instructor: </span>{instructor_name}</p>
                 <div className="flex">
                     <p><span className="font-semibold p-3 border rounded-full "><HiUserGroup className="inline-block text-blue-800"></HiUserGroup></span> {available_seats} Available</p>
-                    <p><span className="font-semibold p-3 border rounded-full "><HiUserGroup className="inline-block text-blue-800"></HiUserGroup></span> {total_set} Student</p>
-
+                    <p><span className="font-semibold p-3 border rounded-full "><HiUserGroup className="inline-block text-blue-800"></HiUserGroup></span> {total_set - available_seats} Enroll</p>
                 </div>
                 <div className="divider"></div>
                 <div className="card-actions justify-between">

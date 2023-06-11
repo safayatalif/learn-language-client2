@@ -9,7 +9,7 @@ const Sidebar = () => {
     const { user, role } = useContext(AuthContext);
     return (
         <>
-            {!role || role === "student" && <div className="drawer-side">
+            {(!role || role === "student") && <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-56 md:w-64  h-full bg-base-200 text-base-content">
                     <li className="w-full mx-auto">
