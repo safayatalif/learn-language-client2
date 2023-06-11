@@ -90,7 +90,7 @@ const MySelectedClass = () => {
                                 <tbody>
                                     {
                                         selectedClasses.map((selectedClass, index) => <tr key={selectedClass?._id}>
-                                            <th>{index + 1}</th>
+                                            <td>{index + 1}</td>
                                             <td>{selectedClass?.topic}</td>
                                             <td>{selectedClass?.language}</td>
                                             <td>{selectedClass?.price} $</td>

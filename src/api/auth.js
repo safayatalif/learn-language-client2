@@ -2,6 +2,8 @@
 export const saveUser = user => {
     const currentUser = {
         email: user.email,
+        image: user.photoURL,
+        name: user.displayName,
     }
 
     fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -46,7 +48,7 @@ export const becomeInstructor = email => {
 
 // Get role
 export const getRole = async email => {
-    const response = await fetch(`http://localhost:5000/users/${email}`)
+    const response = await fetch(`http://localhost:5000/users/role/${email}`)
     const user = await response.json()
     return user?.role
 }

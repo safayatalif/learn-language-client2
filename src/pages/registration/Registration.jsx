@@ -10,7 +10,7 @@ import { saveUser } from "../../api/auth";
 const Registration = () => {
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSignIn, logOut } = useContext(AuthContext);
     let from = location.state?.from?.pathname || "/";
 
     const navigate = useNavigate();
@@ -29,12 +29,10 @@ const Registration = () => {
         else {
             setError("")
             createUser(data?.email, data?.password)
-                .then(result => {
-                    const user = result.user;
-                    console.log(user);
+                .then(() => {
                     updateUserProfile(data?.name, data?.photoURL)
-                        .then((result) => {
-                            saveUser(result.user);
+                        .then(() => {
+                            logOut();
                             setError('')
                             Swal.fire({
                                 icon: 'success',
@@ -42,7 +40,8 @@ const Registration = () => {
                                 showConfirmButton: false,
                                 timer: 2500
                             })
-                            navigate(from, { replace: true });
+
+                            navigate("/login")
                         })
                         .catch(error => {
                             setError(error.message)

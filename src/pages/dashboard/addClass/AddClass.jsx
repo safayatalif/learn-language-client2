@@ -31,8 +31,8 @@ const AddToys = () => {
             .then(Response => {
                 if (Response.success) {
                     const imgURL = Response.data.display_url;
-                    const { total_set, instructor_image, instructor_name, language, topic, price } = data;
-                    const newItem = { status: "pending", total_set: parseInt(total_set), available_seats: parseInt(total_set), instructor_image, instructor_name, language, topic, price: parseFloat(price), image: imgURL }
+                    const { total_set, instructor_image, instructor_name, language, topic, price, instructor_email } = data;
+                    const newItem = { instructor_email, status: "pending", total_set: parseInt(total_set), available_seats: parseInt(total_set), instructor_image, instructor_name, language, topic, price: parseFloat(price), image: imgURL }
                     console.log(newItem)
                     axiosSecure.post('/classes', newItem)
                         .then(data => {
@@ -49,43 +49,18 @@ const AddToys = () => {
                         })
                 }
             })
-
-        console.log(data)
-        // fetch('', {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(data),
-        // })
-        //     .then(response => response.json())
-        //     .then(response => {
-        //         console.log(response)
-        //         if (response?.insertedId) {
-        //             Swal.fire({
-        //                 icon: 'success',
-        //                 title: 'Your Toy has been saved',
-        //                 showConfirmButton: false,
-        //                 timer: 2000
-        //             })
-        //             reset()
-
-        //         }
-        //     })
-        //     .catch(err => console.error(err));
-        // console.log(data)
     };
 
-    // "image"
+    // "image"-------
     // "topic" -------
     // "language"-------
     // "instructor_name"--------
     // "instructor_email"---------
     // "instructor_image"-----
-    // "available_seats"
+    // "available_seats"--------
     // "price"--------
     // "total_set"------
-    // "status"
+    // "status"------
 
     return (
         <div className=''>

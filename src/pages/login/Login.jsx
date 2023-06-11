@@ -25,6 +25,7 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 if (result.user) {
+                    saveUser(result.user);
                     Swal.fire({
                         icon: 'success',
                         title: 'Your LogIn Successfully',

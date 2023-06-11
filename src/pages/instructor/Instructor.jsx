@@ -36,9 +36,9 @@ const Instructor = () => {
                 {
                     loading ? <Loader></Loader> :
                         <div className="overflow-x-auto">
-                            <table className="table">
+                            <table className="table bg-blue-100">
                                 {/* head */}
-                                <thead>
+                                <thead className="bg-blue-300">
                                     <tr>
                                         <th>
                                             #
