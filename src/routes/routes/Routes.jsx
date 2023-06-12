@@ -16,12 +16,15 @@ import ManageClasses from "../../pages/dashboard/manageClasses/ManageClasses";
 import ManageUsers from "../../pages/dashboard/manageUsers/ManageUsers";
 import ErrorPage from "../../pages/errorPage/ErrorPage";
 import PaymentHistory from "../../pages/dashboard/paymentHistory/PaymentHistory";
+import AdminRoute from "./adminRoute";
+import InstructorRoute from "./instructorRoute";
+import StudentRouter from "./studentRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -55,27 +58,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/selected",
-        element: <MySelectedClass></MySelectedClass>
+        element: <StudentRouter><MySelectedClass></MySelectedClass></StudentRouter>
       },
       {
         path: "/dashboard/enroll",
-        element: <MyEnrollClass></MyEnrollClass>
+        element: <StudentRouter><MyEnrollClass></MyEnrollClass></StudentRouter>
       },
       {
         path: "/dashboard/addclass",
-        element: <AddClass></AddClass>
+        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
       },
       {
         path: "/dashboard/myclasses",
-        element: <MyClasses></MyClasses>
+        element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
       },
       {
         path: "/dashboard/manageclasses",
-        element: <ManageClasses></ManageClasses>
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
       },
       {
         path: "/dashboard/manageusers",
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       {
         path: "/dashboard/payment",
