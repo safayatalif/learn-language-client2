@@ -11,7 +11,7 @@ const Classes = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/classes/language/${language}`)
+        fetch(`https://learn-language-server-roan.vercel.app/classes/language/${language}`)
             .then((res) => res.json())
             .then((data) => {
                 setClassItem(data);

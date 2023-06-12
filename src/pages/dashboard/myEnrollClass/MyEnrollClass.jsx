@@ -12,7 +12,7 @@ const MyEnrollClass = () => {
 
     const { user } = useContext(AuthContext);
 
-    const { data: selectedClasses = [] } = useQuery({
+    const { data: enrollClasses = [] } = useQuery({
         queryKey: ['selected'],
         queryFn: async () => {
             const res = await axiosSecure(
@@ -25,10 +25,10 @@ const MyEnrollClass = () => {
     return (
         <div>
             {
-                selectedClasses && Array.isArray(selectedClasses) && selectedClasses.length > 0 ? <div className="md:p-8">
+                enrollClasses && Array.isArray(enrollClasses) && enrollClasses.length > 0 ? <div className="md:p-8">
                     <div className="space-y-4 my-4">
-                        <h3 className="text-xl text-blue-400">My Selected Classes</h3>
-                        <h1 className="text-2xl font-semibold">Pay OR Delete Your Selected Classes</h1>
+                        <h3 className="text-xl text-blue-400">My Enroll Classes !!</h3>
+                        <h1 className="text-2xl font-semibold">You Are Ready to Read !!</h1>
                     </div>
                     {
                         loading ? <Loader></Loader> : <div className="overflow-x-auto">
@@ -45,12 +45,12 @@ const MyEnrollClass = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        selectedClasses.map((selectedClass, index) => <tr key={selectedClass?._id}>
+                                        enrollClasses.map((enrollClass, index) => <tr key={enrollClass?._id}>
                                             <td>{index + 1}</td>
-                                            <td>{selectedClass?.topic}</td>
-                                            <td>{selectedClass?.language}</td>
-                                            <td>{selectedClass?.price} $</td>
-                                            <td>{selectedClass?.transactionId}</td>
+                                            <td>{enrollClass?.topic}</td>
+                                            <td>{enrollClass?.language}</td>
+                                            <td>{enrollClass?.price} $</td>
+                                            <td>{enrollClass?.transactionId}</td>
                                             <td><span className="badge badge-primary badge-sm">Enroll</span></td>
                                         </tr>)
                                     }

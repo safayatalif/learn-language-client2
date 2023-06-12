@@ -23,7 +23,7 @@ const Card = ({ classItem }) => {
             student_email: user?.email
         }
         if (user && available_seats > 0) {
-            fetch(`http://localhost:5000/selected/${_id}`, {
+            fetch(`https://learn-language-server-roan.vercel.app/selected/${_id}`, {
                 method: 'PUT',
                 headers: {
                     "content-type": "application/json"

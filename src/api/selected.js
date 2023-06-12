@@ -1,9 +1,10 @@
-export const statusEnroll = (id, transactionId) => {
+export const statusEnroll = (id, transactionId, date) => {
     const enroll = {
-        transactionId: transactionId
+        transactionId: transactionId,
+        date: date
     }
 
-    return fetch(`http://localhost:5000/selected/${id}`, {
+    return fetch(`https://learn-language-server-roan.vercel.app/selected/${id}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -11,3 +12,5 @@ export const statusEnroll = (id, transactionId) => {
         body: JSON.stringify(enroll),
     }).then(res => res.json())
 }
+
+

@@ -1,11 +1,11 @@
 // get classes data by email 
 export const getClasses = async email => {
-    const response = await fetch(`http://localhost:5000/classes/instructor/${email}`)
+    const response = await fetch(`https://learn-language-server-roan.vercel.app/classes/instructor/${email}`)
     const data = await response.json()
     return data
 }
 export const getSixClasses = async () => {
-    const response = await fetch("http://localhost:5000/classes/six")
+    const response = await fetch("https://learn-language-server-roan.vercel.app/classes/six")
     const data = await response.json()
     return data
 }
@@ -15,7 +15,7 @@ export const statusApproved = id => {
         status: 'approved',
     }
 
-    return fetch(`http://localhost:5000/classes/${id}`, {
+    return fetch(`https://learn-language-server-roan.vercel.app/classes/${id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json',
@@ -28,7 +28,7 @@ export const statusPending = id => {
         status: 'pending',
     }
 
-    return fetch(`http://localhost:5000/classes/${id}`, {
+    return fetch(`https://learn-language-server-roan.vercel.app/classes/${id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json',
@@ -42,7 +42,7 @@ export const statusDenied = (id, feedback) => {
         feedback: feedback
     }
 
-    return fetch(`http://localhost:5000/classes/${id}`, {
+    return fetch(`https://learn-language-server-roan.vercel.app/classes/${id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json',

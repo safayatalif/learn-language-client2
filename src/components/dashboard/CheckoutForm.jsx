@@ -8,7 +8,7 @@ import { AiOutlineTransaction } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { statusEnroll } from "../../api/selected";
 
-const CheckoutForm = ({ price, payItemId }) => {
+const CheckoutForm = ({ price, payItemId , refetch }) => {
     const stripe = useStripe()
     const elements = useElements();
     const { user } = useContext(AuthContext);
@@ -24,7 +24,7 @@ const CheckoutForm = ({ price, payItemId }) => {
     useEffect(() => {
         if (price > 0) {
 
-            fetch("http://localhost:5000/create-payment-intent", {
+            fetch("https://learn-language-server-roan.vercel.app/create-payment-intent", {
                 method: 'POST',
                 headers: {
                     "content-type": "application/json",
@@ -91,7 +91,8 @@ const CheckoutForm = ({ price, payItemId }) => {
             setTransactionId(paymentIntent.id);
 
             if (paymentIntent.id) {
-                statusEnroll(payItemId, paymentIntent.id).then(data => {
+                const date = new Date()
+                statusEnroll(payItemId, paymentIntent.id, date).then(data => {
                     if (data) {
                         Swal.fire({
                             icon: 'success',
@@ -99,6 +100,7 @@ const CheckoutForm = ({ price, payItemId }) => {
                             showConfirmButton: false,
                             timer: 2000
                         })
+                        refetch();
                     }
                 })
             }

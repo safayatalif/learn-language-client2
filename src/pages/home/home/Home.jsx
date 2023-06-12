@@ -1,4 +1,5 @@
 import Banner from "../banner/Banner";
+import OurCourse from "../ourCourse/OurCourse";
 // import ExtraSection from "../extraSection/ExtraSection";
 import PopularClasses from "../popularClasses/PopularClasses";
 import PopularInstructors from "../popularInstructors/PopularInstructors";
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
+            <OurCourse></OurCourse>
             {/* <ExtraSection></ExtraSection> */}
         </div>
     );

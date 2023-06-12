@@ -6,7 +6,7 @@ export const saveUser = user => {
         name: user.displayName,
     }
 
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+    fetch(`https://learn-language-server-roan.vercel.app/users/${user?.email}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -23,7 +23,7 @@ export const becomeAdmin = email => {
         role: 'admin',
     }
 
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://learn-language-server-roan.vercel.app/users/${email}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -37,7 +37,7 @@ export const becomeInstructor = email => {
         role: 'instructor',
     }
 
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://learn-language-server-roan.vercel.app/users/${email}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -48,7 +48,7 @@ export const becomeInstructor = email => {
 
 // Get role
 export const getRole = async email => {
-    const response = await fetch(`http://localhost:5000/users/role/${email}`)
+    const response = await fetch(`https://learn-language-server-roan.vercel.app/users/role/${email}`)
     const user = await response.json()
     return user?.role
 }

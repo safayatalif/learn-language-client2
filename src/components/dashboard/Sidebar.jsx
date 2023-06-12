@@ -25,6 +25,7 @@ const Sidebar = () => {
                         <button className='bg-blue-400 '><Link to="/dashboard"><FaHome className='inline-block'></FaHome> Dashboard Home</Link></button>
                         <button className='bg-blue-400 '><Link to="selected">My Selected Classes</Link></button>
                         <button className='bg-blue-400 '><Link to="enroll">My Enrolled Classes</Link></button>
+                        <button className='bg-blue-400 '><Link to="payment">My Payment History</Link></button>
                     </li>
                 </ul>
             </div>}

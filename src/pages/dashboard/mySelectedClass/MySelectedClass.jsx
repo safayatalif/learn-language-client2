@@ -51,7 +51,7 @@ const MySelectedClass = () => {
                     'Your select Course has been deleted.',
                     'success'
                 )
-                fetch(`http://localhost:5000/selected/${_id}`, {
+                fetch(`https://learn-language-server-roan.vercel.app/selected/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -119,7 +119,7 @@ const MySelectedClass = () => {
                 <div className="modal-box space-y-6">
                     <h3 className="text-xl font-bold text-blue-500 text-center">Payment</h3>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm price={payItem?.price} payItemId={payItem?.payItemId} ></CheckoutForm>
+                        <CheckoutForm refetch={refetch} price={payItem?.price} payItemId={payItem?.payItemId} ></CheckoutForm>
                     </Elements>
 
                 </div>
