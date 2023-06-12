@@ -64,7 +64,6 @@ const Banner = () => {
                             title={bannerDetail?.title}
                         ></SliderBanner></SwiperSlide>)
                 }
-                {/* <SwiperSlide>Slide 9</SwiperSlide> */}
             </Swiper>
         </>
     );

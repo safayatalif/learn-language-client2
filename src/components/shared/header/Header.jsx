@@ -3,9 +3,12 @@ import logo from '../../../assets/image/logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import Swal from "sweetalert2";
+import ThemeContext from "../../../contexts/ThemeProvider";
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    const { theme, toggleTheme } = useContext(ThemeContext);
+
     const handelLogOut = () => {
         logOut()
             .then(() => {
@@ -28,6 +31,7 @@ const Header = () => {
                 <li><Link to="/dashboard">Dashboard</Link></li>
             </>
         }
+        <li><button className="btn btn-primary btn-outline btn-xs" onClick={toggleTheme}>{theme}</button></li>
     </>
     return (
         <div className="navbar bg-base-300 max-w-7xl fixed z-20 bg-opacity-70 text-blue-700 h-20">

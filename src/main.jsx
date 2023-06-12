@@ -6,6 +6,7 @@ import { router } from './routes/routes/Routes.jsx'
 import AuthProvider from './contexts/AuthProvider'
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ThemeProvider } from './contexts/ThemeProvider'
 const queryClient = new QueryClient()
 
 
@@ -15,13 +16,15 @@ const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          <div className='max-w-7xl mx-auto font-serif overflow-hidden'>
-            <RouterProvider router={router} />
-          </div>
-        </QueryClientProvider>
-      </HelmetProvider>
+      <ThemeProvider>
+        <HelmetProvider>
+          <QueryClientProvider client={queryClient}>
+            <div className='max-w-7xl mx-auto font-serif overflow-hidden'>
+              <RouterProvider router={router} />
+            </div>
+          </QueryClientProvider>
+        </HelmetProvider>
+      </ThemeProvider>,
     </AuthProvider>
   </React.StrictMode>,
 )
