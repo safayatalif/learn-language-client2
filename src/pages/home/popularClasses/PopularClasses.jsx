@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 
 const PopularClasses = () => {
     const [loading, setLoading] = useState(true);
-    const [classItems, setClassItem] = useState([]);
+    const [classItems, setClassItems] = useState([]);
 
 
     useEffect(() => {
         getSixClasses().then((data) => {
-            setClassItem(data);
+            setClassItems(data);
             setLoading(false);
         })
     }, [])
@@ -20,8 +20,8 @@ const PopularClasses = () => {
         <div className="py-20">
             <div className="grid grid-cols-1 md:grid-cols-2 py-12">
                 <div className="space-y-4">
-                    <h3 className="text-2xl text-blue-400">Popular Classes</h3>
-                    <h1 className="text-4xl font-semibold">See Our Popular Classes</h1>
+                    <h3 className="text-2xl text-blue-400">Popular Classes !</h3>
+                    <h1 className="text-4xl font-semibold">See Our Popular Classes !</h1>
                 </div>
                 <div>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.

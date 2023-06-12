@@ -59,8 +59,8 @@ const Card = ({ classItem }) => {
 
     return (
         <div className="card w-full bg-purple-50 shadow-xl group ">
-            <figure className="h-56"><img className="w-full group-hover:scale-125 transition object-cover rounded-lg" src={image} alt="" /></figure>
-            <div className="card-body space-y-4">
+            <figure className="h-52"><img className="w-full group-hover:scale-125 transition object-cover rounded-lg" src={image} alt="" /></figure>
+            <div className="card-body space-y-2">
                 <h2 className="card-title">{topic}</h2>
                 <p><span className="font-semibold">Instructor: </span>{instructor_name}</p>
                 <div className="flex">
@@ -70,7 +70,7 @@ const Card = ({ classItem }) => {
                 <div className="divider"></div>
                 <div className="card-actions justify-between">
                     <p><span className="font-semibold p-3 border rounded-full "><HiOutlineCurrencyDollar className="inline-block text-blue-800"></HiOutlineCurrencyDollar></span> {price} $</p>
-                    <button onClick={() => handelSelect(classItem)} className="btn btn-primary">Select</button>
+                    <button onClick={() => handelSelect(classItem)} className="btn btn-primary btn-sm">Select</button>
                 </div>
             </div>
         </div>
