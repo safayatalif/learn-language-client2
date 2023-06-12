@@ -64,8 +64,8 @@ const MySelectedClass = () => {
         })
     }
 
-    const handleModal = (payItemId, price) => {
-        setPayItem({ payItemId, price });
+    const handleModal = (payItemId, price , available) => {
+        setPayItem({ payItemId, price , available });
 
     }
 
@@ -98,7 +98,7 @@ const MySelectedClass = () => {
                                             <td>{selectedClass?.price} $</td>
                                             <td className="space-x-4">
                                                 <span onClick={() => handleDelete(selectedClass?._id)} className="btn btn-xs btn-error"><AiFillDelete></AiFillDelete></span>
-                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id, selectedClass?.price)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
+                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id, selectedClass?.price , selectedClass?.available_seats)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
 
                                             </td>
                                         </tr>)
@@ -119,7 +119,7 @@ const MySelectedClass = () => {
                 <div className="modal-box space-y-6">
                     <h3 className="text-xl font-bold text-blue-500 text-center">Payment</h3>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm refetch={refetch} price={payItem?.price} payItemId={payItem?.payItemId} ></CheckoutForm>
+                        <CheckoutForm refetch={refetch} price={payItem?.price} payItemId={payItem?.payItemId} available={payItem?.available} ></CheckoutForm>
                     </Elements>
 
                 </div>

@@ -7,8 +7,9 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import { AiOutlineTransaction } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { statusEnroll } from "../../api/selected";
+import { enrolled } from "../../api/classes";
 
-const CheckoutForm = ({ price, payItemId , refetch }) => {
+const CheckoutForm = ({ price, payItemId, refetch, available }) => {
     const stripe = useStripe()
     const elements = useElements();
     const { user } = useContext(AuthContext);
@@ -92,8 +93,10 @@ const CheckoutForm = ({ price, payItemId , refetch }) => {
 
             if (paymentIntent.id) {
                 const date = new Date()
+
                 statusEnroll(payItemId, paymentIntent.id, date).then(data => {
                     if (data) {
+                        enrolled(payItemId, available)
                         Swal.fire({
                             icon: 'success',
                             title: 'Your Payment Success',

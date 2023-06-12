@@ -36,6 +36,19 @@ export const statusPending = id => {
         body: JSON.stringify(currentUser),
     }).then(res => res.json())
 }
+export const enrolled = (id, available) => {
+    const currentUser = {
+        available_seats: available - 1,
+    }
+
+    return fetch(`https://learn-language-server-roan.vercel.app/classes/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(currentUser),
+    }).then(res => res.json())
+}
 export const statusDenied = (id, feedback) => {
     const currentUser = {
         status: 'denied',
