@@ -22,8 +22,6 @@ const MyClasses = () => {
 
     const handleFeedback = (feedback) => {
         setFeedBack(feedback)
-        console.log("feedback")
-
     }
 
 

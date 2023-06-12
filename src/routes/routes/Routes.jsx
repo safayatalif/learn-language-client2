@@ -14,11 +14,13 @@ import PrivateRoute from "./privateRoute";
 import MyClasses from "../../pages/dashboard/myClasses/MyClasses";
 import ManageClasses from "../../pages/dashboard/manageClasses/ManageClasses";
 import ManageUsers from "../../pages/dashboard/manageUsers/ManageUsers";
+import ErrorPage from "../../pages/errorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

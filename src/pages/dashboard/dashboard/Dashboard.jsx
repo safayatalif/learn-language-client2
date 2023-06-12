@@ -1,8 +1,11 @@
+import Lottie from "lottie-react";
+import dashboardImage from "../../../assets/lottie/dashboard.json"
+
 
 const Dashboard = () => {
     return (
-        <div className="pt-20">
-            Dashboard
+        <div className="">
+            <Lottie className='w-2/3 mx-auto' animationData={dashboardImage}></Lottie>
         </div>
     );
 };

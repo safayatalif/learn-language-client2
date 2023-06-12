@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSixClasses } from "../../../api/classes";
 import Loader from "../../../components/shared/loader/Loader";
+import { Link } from "react-router-dom";
 
 
 
@@ -51,6 +52,9 @@ const PopularInstructors = () => {
 
                     </div>
                 }
+                <div className="flex justify-center py-12">
+                    <Link to="instructor"><button className="btn btn-primary">See All Instructor</button></Link>
+                </div>
 
             </div>
         </div>

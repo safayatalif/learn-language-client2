@@ -35,17 +35,14 @@ const AddToys = () => {
                     const newItem = { instructor_email, status: "pending", total_set: parseInt(total_set), available_seats: parseInt(total_set), instructor_image, instructor_name, language, topic, price: parseFloat(price), image: imgURL }
                     console.log(newItem)
                     axiosSecure.post('/classes', newItem)
-                        .then(data => {
-                            console.log('after posting new menu item', data.data)
-                            if (data.data.insertedId) {
-                                reset();
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Item added successfully',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            }
+                        .then(() => {
+                            reset();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Item added successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                         })
                 }
             })
