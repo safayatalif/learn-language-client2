@@ -44,7 +44,10 @@ const Banner = () => {
                             <div className="max-w-xl">
                                 <h1 className="text-4xl font-bold text-purple-600">Hello there !!</h1>
                                 <h1 className="text-5xl font-bold mt-8">Learn New Languages and Move Forward</h1>
-                                <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                                <p className="py-6">Immerse yourself in language learning with our vibrant banner
+                                    section. Discover captivating visuals and enticing messages that inspire
+                                    and motivate you to embark on your language learning journey.
+                                </p>
                                 <button className="btn btn-primary">Get Started</button>
                             </div>
                         </div>
