@@ -7,6 +7,7 @@ import { FaGoogle } from "react-icons/fa";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { saveUser } from "../../api/auth";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [error, setError] = useState("");
@@ -66,11 +67,14 @@ const Login = () => {
 
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 pt-20">
-            <div className="w-full p-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 pt-20" >
+            <Helmet>
+                <title>Sign In  | Learn Language</title>
+            </Helmet>
+            <div className="w-full p-12" data-aos="fade-left" data-aos-duration="2000">
                 <img src="https://img.freepik.com/free-vector/my-password-concept-illustration_114360-4294.jpg?size=626&ext=jpg&ga=GA1.1.1613183627.1673832056&semt=robertav1_2_sidr" alt="" />
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-duration="2000">
                 <div className="card w-full p-12">
                     <h1 className="text-5xl font-semibold text-purple-600 text-center">Sign In !!</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">

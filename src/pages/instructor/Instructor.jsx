@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Loader from "../../components/shared/loader/Loader";
+import { Helmet } from "react-helmet-async";
 
 const Instructor = () => {
 
@@ -18,7 +19,10 @@ const Instructor = () => {
     }, [])
     return (
         <div className='py-12'>
-            <div className="grid grid-cols-1 md:grid-cols-2 py-12 gap-4">
+            <Helmet>
+                <title>Instructor | Learn Language</title>
+            </Helmet>
+            <div className="grid grid-cols-1 md:grid-cols-2 py-12 gap-4" data-aos="fade-left" data-aos-duration="2000">
                 <div className="space-y-4">
                     <h3 className="text-2xl text-blue-400">Our Instructor</h3>
                     <h1 className="text-4xl font-semibold">Find Your Instructor</h1>
@@ -35,7 +39,7 @@ const Instructor = () => {
             <div>
                 {
                     loading ? <Loader></Loader> :
-                        <div className="overflow-x-auto">
+                        <div className="overflow-x-auto" data-aos="fade-up" data-aos-duration="2000">
                             <table className="table bg-blue-100">
                                 {/* head */}
                                 <thead className="bg-blue-300">

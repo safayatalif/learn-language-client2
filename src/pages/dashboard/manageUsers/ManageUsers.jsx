@@ -53,12 +53,12 @@ const ManageUsers = () => {
     return (
         <div className="mx-8">
             <Helmet>
-                <title>Manage User -Learn Language</title>
+                <title>Manage User | Learn Language</title>
             </Helmet>
             <h3 className="text-xl mt-4  text-blue-400">Manage users</h3>
 
             <div className="overflow-x-auto">
-                <table className="table table-xs">
+                <table className="table table-xs" data-aos="fade-up" data-aos-duration="2000">
                     {/* head */}
                     <thead>
                         <tr>

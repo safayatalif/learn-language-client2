@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaGoogle } from "react-icons/fa";
 import { saveUser } from "../../api/auth";
+import { Helmet } from "react-helmet-async";
 const Registration = () => {
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -82,10 +83,13 @@ const Registration = () => {
     return (
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 pt-20">
-                <div className="w-full p-12">
+                <Helmet>
+                    <title>Sign Up | Learn Language</title>
+                </Helmet>
+                <div className="w-full p-12" data-aos="fade-up" data-aos-duration="2000">
                     <img src="https://img.freepik.com/free-vector/forms-concept-illustration_114360-4947.jpg?w=740&t=st=1686147636~exp=1686148236~hmac=f9d5e9e5cccc6273306dd2e8d3e4ca6f76e0dedd3e9534849c18c5d80153bf30" alt="" />
                 </div>
-                <div>
+                <div data-aos="fade-left" data-aos-duration="2000">
                     <div className="card w-full p-12">
                         <h1 className="text-5xl font-semibold text-purple-600 text-center">Sign Up !!</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">

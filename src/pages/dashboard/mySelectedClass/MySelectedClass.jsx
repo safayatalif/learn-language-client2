@@ -13,6 +13,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PUBLISHABLE_KEY);
 
 
@@ -64,13 +65,16 @@ const MySelectedClass = () => {
         })
     }
 
-    const handleModal = (payItemId, price , available) => {
-        setPayItem({ payItemId, price , available });
+    const handleModal = (payItemId, price, available) => {
+        setPayItem({ payItemId, price, available });
 
     }
 
     return (
         <>
+            <Helmet>
+                <title>My Selected Classes | Learn Language</title>
+            </Helmet>
             {
                 selectedClasses && Array.isArray(selectedClasses) && selectedClasses.length > 0 ? <div className="md:p-8">
                     <div className="space-y-4 my-4">
@@ -79,7 +83,7 @@ const MySelectedClass = () => {
                     </div>
                     {
                         loading ? <Loader></Loader> : <div className="overflow-x-auto">
-                            <table className="table">
+                            <table className="table" data-aos="fade-up" data-aos-duration="2000">
                                 <thead className="bg-blue-300">
                                     <tr>
                                         <th></th>
@@ -98,7 +102,7 @@ const MySelectedClass = () => {
                                             <td>{selectedClass?.price} $</td>
                                             <td className="space-x-4">
                                                 <span onClick={() => handleDelete(selectedClass?._id)} className="btn btn-xs btn-error"><AiFillDelete></AiFillDelete></span>
-                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id, selectedClass?.price , selectedClass?.available_seats)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
+                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id, selectedClass?.price, selectedClass?.available_seats)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
 
                                             </td>
                                         </tr>)

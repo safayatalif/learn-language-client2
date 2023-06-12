@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import Loader from "../../../components/shared/loader/Loader";
 import { getClasses } from "../../../api/classes";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
     const [myClasses, setMyClasses] = useState();
@@ -27,13 +28,16 @@ const MyClasses = () => {
 
     return (
         <div className="p-4">
+            <Helmet>
+                <title>My Classes | Learn Language</title>
+            </Helmet>
             <div className="space-y-4 my-4">
                 <h3 className="text-xl text-blue-400">My Selected Classes</h3>
                 <h1 className="text-2xl font-semibold">Pay OR Delete Your Selected Classes</h1>
             </div>
             {
                 loading ? <Loader></Loader> : <div className="overflow-x-auto">
-                    <table className="table bg-blue-100">
+                    <table className="table bg-blue-100" data-aos="fade-up" data-aos-duration="2000">
                         <thead className="bg-blue-300 ">
                             <tr>
                                 <th>#</th>

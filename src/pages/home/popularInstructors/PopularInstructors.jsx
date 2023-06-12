@@ -18,23 +18,22 @@ const PopularInstructors = () => {
     }, [])
     return (
         <div className="">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-left" data-aos-duration="2000">
                 <div className="space-y-4">
                     <h3 className="text-2xl text-blue-400">Our Popular Instructor !</h3>
                     <h1 className="text-4xl font-semibold">See Our Popular Instructor !</h1>
                 </div>
                 <div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Voluptas harum maxime necessitatibus incidunt architecto!
-                        Eius totam eum, culpa similique iure impedit saepe soluta
-                        aut quasi, fuga quae cumque ipsam quia laboriosam labore
-                        asperiores quidem. Inventore consequuntur exercitationem
-                        voluptatem! Odio, minima.</p>
+                    <p>Discover our popular language instructors who are experienced and
+                        passionate about teaching. Learn from their expertise and unique
+                        teaching methods to enhance your language skills and reach your
+                        learning goals.
+                    </p>
                 </div>
             </div>
             <div className="">
                 {
-                    loading ? <Loader></Loader> : <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8">
+                    loading ? <Loader></Loader> : <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8" data-aos="fade-up" data-aos-duration="2000">
                         {
                             instructors.map(instructor => <div key={instructor?._id} className="card card-side bg-purple-50 shadow-xl group">
                                 <figure>

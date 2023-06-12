@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import Loader from "../../../components/shared/loader/Loader";
 import EmptyComponent from "../../../components/shared/emptyComponent/EmptyComponent";
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
     const [loading, setLoading] = useState(true);
@@ -24,6 +25,9 @@ const PaymentHistory = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Payment History | Learn Language</title>
+            </Helmet>
             <div>
                 {
                     enrollClasses && Array.isArray(enrollClasses) && enrollClasses.length > 0 ? <div className="md:p-8">
@@ -33,7 +37,7 @@ const PaymentHistory = () => {
                         </div>
                         {
                             loading ? <Loader></Loader> : <div className="overflow-x-auto">
-                                <table className="table">
+                                <table className="table" data-aos="fade-up" data-aos-duration="2000">
                                     <thead className="bg-blue-300">
                                         <tr>
                                             <th></th>

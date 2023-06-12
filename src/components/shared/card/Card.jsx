@@ -52,7 +52,14 @@ const Card = ({ classItem }) => {
                 .catch(err => console.error(err));
         }
         else {
-            alert("please login")
+            Swal.fire({
+                icon: 'error',
+                title: 'Please Login First !!',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            navigator("/login")
+            
         }
 
     }

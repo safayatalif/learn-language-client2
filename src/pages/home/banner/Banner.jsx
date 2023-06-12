@@ -23,6 +23,8 @@ const Banner = () => {
     return (
         <>
             <Swiper
+                data-aos="fade-up"
+                data-aos-duration="2000"
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
@@ -48,7 +50,7 @@ const Banner = () => {
                         </div>
                     </div>
                 </SwiperSlide>
-                
+
                 {
                     bannerDetails.map((bannerDetail, i) => <SwiperSlide key={i}>
                         <SliderBanner

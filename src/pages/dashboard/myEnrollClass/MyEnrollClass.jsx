@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import EmptyComponent from "../../../components/shared/emptyComponent/EmptyComponent";
 import Loader from "../../../components/shared/loader/Loader";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const MyEnrollClass = () => {
 
@@ -24,6 +25,9 @@ const MyEnrollClass = () => {
     })
     return (
         <div>
+            <Helmet>
+                <title>My Enroll Classes | Learn Language</title>
+            </Helmet>
             {
                 enrollClasses && Array.isArray(enrollClasses) && enrollClasses.length > 0 ? <div className="md:p-8">
                     <div className="space-y-4 my-4">
@@ -33,7 +37,7 @@ const MyEnrollClass = () => {
                     {
                         loading ? <Loader></Loader> : <div className="overflow-x-auto">
                             <table className="table">
-                                <thead className="bg-blue-300">
+                                <thead className="bg-blue-300" data-aos="fade-up" data-aos-duration="2000">
                                     <tr>
                                         <th></th>
                                         <th>Course</th>

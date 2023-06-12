@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 
 
 
-const AddToys = () => {
+const AddClasses = () => {
     const { user } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
 
@@ -145,4 +145,4 @@ const AddToys = () => {
     );
 };
 
-export default AddToys;
+export default AddClasses;

@@ -11,7 +11,7 @@ const ErrorPage = () => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200">
             <Helmet>
-                <title>Error -Cars King</title>
+                <title>Error | Learn Language</title>
             </Helmet>
             <div>
                 <Lottie className='w-full h-80 md:h-96' animationData={errorLottie}></Lottie>
