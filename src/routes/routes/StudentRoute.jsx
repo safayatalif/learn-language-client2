@@ -5,14 +5,14 @@ import Loader from "../../components/shared/loader/Loader";
 
 
 const StudentRouter = ({ children }) => {
-    const { user, loading, role } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const location = useLocation();
 
     if (loading) {
         return <Loader></Loader>
     }
 
-    if (user && role === "student") {
+    if (user) {
         return children;
     }
     return <Navigate to="/" state={{ from: location }} replace></Navigate>
