@@ -136,7 +136,7 @@ const AddClasses = () => {
                     <textarea className="textarea textarea-success text-black" type='text' placeholder="Detail Description" {...register("detailDescription")}></textarea>
                 </div>
                 <div className="form-control mt-6">
-                    <input className="btn btn-primary" type="submit" />
+                    <input className="btn btn-outline btn-secondary" type="submit" />
                 </div>
 
             </form>

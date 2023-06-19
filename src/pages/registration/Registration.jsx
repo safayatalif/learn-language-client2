@@ -95,27 +95,27 @@ const Registration = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span >Name</span>
                                 </label>
                                 <input type="text" placeholder="name" className="input input-bordered" required {...register("name")} />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span >Photo URL</span>
                                 </label>
                                 <input type="url"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span >Email</span>
                                 </label>
                                 <input type="email" placeholder="email" className="input input-bordered" {...register("email", { required: true })} />
                                 {errors.email && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Email is required</p>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span >Password</span>
                                 </label>
                                 <div className="join">
                                     <input type={showPassword ? 'text' : 'password'}  {...register("password", {
@@ -139,7 +139,7 @@ const Registration = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Confirm Password</span>
+                                    <span >Confirm Password</span>
                                 </label>
                                 <input type="password" placeholder="confirmPassword" className="input input-bordered" {...register("confirmPassword", { required: true })} />
                                 {error && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> {error}</p>}
@@ -148,11 +148,11 @@ const Registration = () => {
                             </div>
 
                             <div className="form-control mt-6">
-                                <button type="submit" className="btn btn-primary">Register</button>
+                                <button type="submit" className="btn btn-outline btn-secondary">Register</button>
                             </div>
                             <div className="divider">OR</div>
                             <div className="form-control">
-                                <button onClick={handleGoogleSignIn} className="btn btn-primary btn-outline"><FaGoogle className='mr-4'></FaGoogle>Google Sign In</button>
+                                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-secondary"><FaGoogle className='mr-4'></FaGoogle>Google Sign In</button>
                             </div>
                             <label className="label">
                                 <p>Already Have An Account ?<Link to="/login" className='underline text-red-400'> Login</Link></p>

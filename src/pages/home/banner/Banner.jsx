@@ -11,7 +11,7 @@ import SliderBanner from "../../../components/sliderBanner/SliderBanner";
 
 const Banner = () => {
     const [bannerDetails, setBannerDetails] = useState([]);
-    const bgImage = "https://img.freepik.com/free-vector/black-banner-with-yellow-geometric-shapes_1017-32327.jpg?size=626&ext=jpg&ga=GA1.1.1613183627.1673832056&semt=robertav1_2_sidr"
+    // const bgImage = "https://img.freepik.com/free-vector/black-banner-with-yellow-geometric-shapes_1017-32327.jpg?size=626&ext=jpg&ga=GA1.1.1613183627.1673832056&semt=robertav1_2_sidr"
 
     useEffect(() => {
         fetch("banner.json")
@@ -39,7 +39,9 @@ const Banner = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div className="hero min-h-screen text-slate-300 bg-contain" style={{ backgroundImage: `url(${bgImage})` }}>
+                    <div className="hero min-h-screen  bg-contain"
+                    // style={{ backgroundImage: `url(${bgImage})` }}
+                    >
                         <div className="hero-content text-center">
                             <div className="max-w-xl">
                                 <h1 className="text-4xl font-bold text-purple-600">Hello there !!</h1>
@@ -48,7 +50,7 @@ const Banner = () => {
                                     section. Discover captivating visuals and enticing messages that inspire
                                     and motivate you to embark on your language learning journey.
                                 </p>
-                                <button className="btn btn-primary">Get Started</button>
+                                <button className="btn btn-outline btn-secondary">Get Started</button>
                             </div>
                         </div>
                     </div>

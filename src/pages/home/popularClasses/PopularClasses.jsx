@@ -39,7 +39,7 @@ const PopularClasses = () => {
                 </div>
             }
             <div className="flex justify-center py-12">
-                <Link to="classes"><button className="btn btn-primary">See All Classes</button></Link>
+                <Link to="classes"><button className="btn btn-outline btn-secondary">See All Classes</button></Link>
             </div>
         </div>
 

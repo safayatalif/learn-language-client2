@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import Swal from "sweetalert2";
 import ThemeContext from "../../../contexts/ThemeProvider";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -31,13 +32,13 @@ const Header = () => {
                 <li><Link to="/dashboard">Dashboard</Link></li>
             </>
         }
-        <li><button className="btn btn-primary btn-outline btn-xs" onClick={toggleTheme}>{theme}</button></li>
+        <li onClick={toggleTheme}><p>{theme === "light" ? <MdDarkMode></MdDarkMode> : <MdOutlineDarkMode></MdOutlineDarkMode>}</p></li>
     </>
     return (
-        <div className="navbar bg-base-300 max-w-7xl fixed z-20 bg-opacity-70 text-blue-700 h-20">
+        <div className="navbar  max-w-7xl h-20">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                    <label tabIndex={0} className="btn btn-outline btn-secondary lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -61,7 +62,7 @@ const Header = () => {
                         <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src={user?.photoURL} />
                         </div>
-                    </div> : <button className="btn btn-primary btn-outline"><Link to="/login">Login</Link></button>
+                    </div> : <button className="btn btn-outline btn-secondary"><Link to="/login">Login</Link></button>
                 }
             </div>
         </div>

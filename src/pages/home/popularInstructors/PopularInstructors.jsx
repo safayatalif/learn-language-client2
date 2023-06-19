@@ -35,7 +35,7 @@ const PopularInstructors = () => {
                 {
                     loading ? <Loader></Loader> : <div className="grid grid-cols-1 md:grid-cols-3 gap-4  md:p-4 mt-8" data-aos="fade-up" data-aos-duration="2000">
                         {
-                            instructors.map(instructor => <div key={instructor?._id} className="card card-side bg-purple-50 shadow-xl group">
+                            instructors.map(instructor => <div key={instructor?._id} className="card card-side bg-purple-50 shadow-md group">
                                 <figure>
                                     <img className="mask mask-parallelogram-2 group-hover:scale-105" src={instructor?.instructor_image} />
                                 </figure>
@@ -43,7 +43,7 @@ const PopularInstructors = () => {
                                     <h2 className="card-title">{instructor?.instructor_name}</h2>
                                     <p>{instructor?.instructor_email}</p>
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary btn-sm">See Classes</button>
+                                        <button className="btn btn-outline btn-secondary btn-sm">See Classes</button>
                                     </div>
                                 </div>
                             </div>)
@@ -52,7 +52,7 @@ const PopularInstructors = () => {
                     </div>
                 }
                 <div className="flex justify-center py-12">
-                    <Link to="instructor"><button className="btn btn-primary">See All Instructor</button></Link>
+                    <Link to="instructor"><button className="btn btn-outline btn-secondary">See All Instructor</button></Link>
                 </div>
 
             </div>

@@ -39,19 +39,19 @@ const Classes = () => {
             <Tabs>
                 <TabList>
                     <Tab onClick={() => { setLanguage('English'), setLoading(true) }}>
-                        <button className="btn btn-primary btn-outline">English</button>
+                        <button className="btn btn-outline btn-secondary">English</button>
                     </Tab>
                     <Tab onClick={() => { setLanguage('Spanish'), setLoading(true) }}>
-                        <button className="btn btn-primary btn-outline">Spanish</button>
+                        <button className="btn btn-outline btn-secondary">Spanish</button>
                     </Tab>
                     <Tab onClick={() => { setLanguage('Japanese'), setLoading(true) }}>
-                        <button className="btn btn-primary btn-outline">Japanese</button>
+                        <button className="btn btn-outline btn-secondary">Japanese</button>
                     </Tab>
                     <Tab onClick={() => { setLanguage('French'), setLoading(true) }}>
-                        <button className="btn btn-primary btn-outline">French</button>
+                        <button className="btn btn-outline btn-secondary">French</button>
                     </Tab>
                     <Tab onClick={() => { setLanguage('Chinese'), setLoading(true) }}>
-                        <button className="btn btn-primary btn-outline">Chinese</button>
+                        <button className="btn btn-outline btn-secondary">Chinese</button>
                     </Tab>
                 </TabList>
 

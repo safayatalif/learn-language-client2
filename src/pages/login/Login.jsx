@@ -81,14 +81,14 @@ const Login = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span >Email</span>
                             </label>
                             <input type="email" placeholder="email" className="input input-bordered" {...register("email", { required: true })} />
                             {errors.email && <p className="text-red-600"><ImWarning className="inline-block"></ImWarning> Email is required</p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span >Password</span>
                             </label>
                             <div className="join">
                                 <input type={showPassword ? 'text' : 'password'} placeholder="Enter your password" className="input input-bordered join-item w-full" {...register("password", { required: true })} />
@@ -105,11 +105,11 @@ const Login = () => {
                         </label>
 
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-primary">LogIn</button>
+                            <button type="submit" className="btn btn-outline btn-secondary">LogIn</button>
                         </div>
                         <div className="divider">OR</div>
                         <div className="form-control">
-                            <button onClick={handleGoogleSignIn} className="btn btn-primary btn-outline"><FaGoogle className='mr-4'></FaGoogle>Google Sign In</button>
+                            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-secondary"><FaGoogle className='mr-4'></FaGoogle>Google Sign In</button>
                         </div>
                         <label className="label">
                             <p><span>Don&apos;t Have An Account ?</span> <Link to="/register" className='underline text-red-400'>Register</Link></p>

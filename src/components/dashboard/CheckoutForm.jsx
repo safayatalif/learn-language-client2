@@ -130,7 +130,7 @@ const CheckoutForm = ({ price, payItemId, refetch, available }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary mt-6 w-full" type="submit" disabled={!stripe || processing}>
+                <button className="btn btn-outline btn-secondary mt-6 w-full" type="submit" disabled={!stripe || processing}>
                     Pay {price} $
                 </button>
             </form>

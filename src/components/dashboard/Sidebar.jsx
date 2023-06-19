@@ -11,7 +11,7 @@ const Sidebar = () => {
         <>
             {(!role || role === "student") && <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-56 md:w-64  h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-56 md:w-64  h-full ">
                     <li className="w-full mx-auto">
                         <Link to='/dashboard'>
                             <div className="avatar">
@@ -32,7 +32,7 @@ const Sidebar = () => {
             {
                 role === "instructor" && <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-56 md:w-64  h-full bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-56 md:w-64  h-full ">
                         <li className="w-full mx-auto">
                             <Link to='/dashboard'>
                                 <div className="avatar">
@@ -53,7 +53,7 @@ const Sidebar = () => {
             {
                 role === "admin" && <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-56 md:w-64  h-full bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-56 md:w-64  h-full ">
                         <li className="w-full mx-auto">
                             <Link to='/dashboard'>
                                 <div className="avatar">

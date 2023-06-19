@@ -101,8 +101,8 @@ const MySelectedClass = () => {
                                             <td>{selectedClass?.language}</td>
                                             <td>{selectedClass?.price} $</td>
                                             <td className="space-x-4">
-                                                <span onClick={() => handleDelete(selectedClass?._id)} className="btn btn-xs btn-error"><AiFillDelete></AiFillDelete></span>
-                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id, selectedClass?.price, selectedClass?.available_seats)} className="btn btn-xs btn-primary"><FaPaypal></FaPaypal></label>
+                                                <span onClick={() => handleDelete(selectedClass?._id)} className="btn btn-outline btn-secondarybtn-xs btn-error"><AiFillDelete></AiFillDelete></span>
+                                                <label disabled={selectedClass.transactionId} htmlFor="my_modal_7" onClick={() => handleModal(selectedClass?._id, selectedClass?.price, selectedClass?.available_seats)} className="btn btn-outline btn-secondarybtn-xs "><FaPaypal></FaPaypal></label>
 
                                             </td>
                                         </tr>)
